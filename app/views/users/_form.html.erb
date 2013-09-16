@@ -1,0 +1,32 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </p>
+  <div>
+  <%= f.fields_for :license do |g| %>
+  </div>
+    <p>
+      <%= g.label :number %>
+      <%= g.text_field :number %>
+    </p>
+    <p>
+      <%= g.label :state %>
+      <%= g.text_field :state %>
+    </p>
+  <% end %>
+
+<%= f.submit %>
+<% end %>
